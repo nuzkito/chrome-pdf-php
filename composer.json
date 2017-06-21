@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Nuzkito\\ChromePdf\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2",
+        "spatie/pdf-to-text": "^1.0"
+    }
+}
