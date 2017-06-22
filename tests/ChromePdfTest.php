@@ -8,6 +8,12 @@ use Nuzkito\ChromePdf\ChromePdf;
 class ChromePdfTest extends TestCase
 {
     protected $pdfFile = 'assets/result.pdf';
+    protected $chromeExecutable;
+
+    protected function setUp()
+    {
+        $this->chromeExecutable = $_ENV['chrome-executable'];
+    }
 
     protected function tearDown()
     {
@@ -22,7 +28,7 @@ class ChromePdfTest extends TestCase
     /** @test */
     function generate_pdf_from_html_file()
     {
-        $pdf = new ChromePdf('google-chrome');
+        $pdf = new ChromePdf($this->chromeExecutable);
         $pdf->output(__DIR__ . '/' . $this->pdfFile);
         $pdf->generateFromFile(__DIR__ . '/assets/index.html');
 
