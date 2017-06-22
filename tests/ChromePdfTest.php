@@ -4,6 +4,7 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use Nuzkito\ChromePdf\ChromePdf;
+use Exception;
 
 class ChromePdfTest extends TestCase
 {
@@ -17,12 +18,22 @@ class ChromePdfTest extends TestCase
 
     protected function tearDown()
     {
-        unlink(__DIR__ . '/' . $this->pdfFile);
+        if (file_exists(__DIR__ . '/' . $this->pdfFile)) {
+            unlink(__DIR__ . '/' . $this->pdfFile);
+        }
     }
 
     protected function getTextFromPdf()
     {
         return \Spatie\PdfToText\Pdf::getText(__DIR__ . '/' . $this->pdfFile);
+    }
+
+    /** @test */
+    function throws_an_error_if_chrome_is_not_found()
+    {
+        $this->expectException(Exception::class);
+
+        $pdf = new ChromePdf('this-is-not-chrome');
     }
 
     /** @test */
