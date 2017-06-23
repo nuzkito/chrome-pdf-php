@@ -39,4 +39,14 @@ class ChromePdf
         $exec .= "file://{$file} 2>&1";
         exec($exec);
     }
+
+    public function generateFromHtml($html)
+    {
+        $html = rawurlencode($html);
+
+        $exec = "{$this->binary} --headless --disable-gpu ";
+        $exec .= "--print-to-pdf={$this->output} ";
+        $exec .= "data:text/html,{$html} 2>&1";
+        exec($exec);
+    }
 }
