@@ -2,6 +2,12 @@
 
 Simple wrapper to convert HTML to PDF using Google Chrome in headless mode.
 
+## Install
+
+```
+composer require nuzkito/chrome-html-to-pdf
+```
+
 Requires Chrome 59 installed. To install Chrome in a Linux Debian:
 ```bash
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
