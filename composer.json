@@ -1,4 +1,16 @@
 {
+    "name": "nuzkito/chrome-html-to-pdf",
+    "type": "library",
+    "description": "Converts HTML to PDF using Google Chrome",
+    "keywords": ["html", "pdf"],
+    "homepage": "https://github.com/abalozz/chrome-pdf-php",
+    "authors": [
+        {
+            "name": "Iván Abascal Lozano",
+            "email": "abalozz@outlook.com",
+            "homepage": "https://abalozz.es"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Nuzkito\\ChromePdf\\": "src/"
