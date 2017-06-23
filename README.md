@@ -1,6 +1,6 @@
 # ChromePdf
 
-Simple wrapper to generate PDF using Google Chrome in headless mode.
+Simple wrapper to convert HTML to PDF using Google Chrome in headless mode.
 
 Requires Chrome 59 installed. To install Chrome in a Linux Debian:
 ```
