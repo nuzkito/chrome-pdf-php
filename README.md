@@ -19,6 +19,8 @@ sudo apt-get install -f
 ```php
 <?php
 
+use Nuzkito\ChromePdf\ChromePdf;
+
 // By default expects `google-chrome` installed in the system, but you can specify the route to the binary, or other binary like `chromium`.
 $pdf = new ChromePdf('/path/to/google-chrome');
 
