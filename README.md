@@ -9,6 +9,22 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get install -f
 ```
 
+## Use
+```
+<?php
+
+// By default expects `google-chrome` installed in the system, but you can specify the route to the binary, or other binary like `chromium`.
+$pdf = new ChromePdf('/path/to/google-chrome');
+
+// Route when PDF will be saved.
+$pdf->output('/path/to/result.pdf');
+
+// You can generate a PDF from a HTML file
+$pdf->generateFromFile('/path/to/html/document.html');
+// or pass a string with the HTML
+$pdf->generateFromHtml('<h1>Hello world!</h1>');
+```
+
 ## Tests
 
 You need to install `pdftotext` to execute the automated tests:
