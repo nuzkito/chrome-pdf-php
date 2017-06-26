@@ -32,21 +32,21 @@ class ChromePdf
         return $this;
     }
 
-    public function generateFromFile($file)
+    public function generateFromUrl($url)
     {
         $exec = "{$this->binary} --headless --disable-gpu ";
         $exec .= "--print-to-pdf={$this->output} ";
-        $exec .= "file://{$file} 2>&1";
+        $exec .= "{$url} 2>&1";
         exec($exec);
+    }
+
+    public function generateFromFile($file)
+    {
+        $this->generateFromUrl('file://' . $file);
     }
 
     public function generateFromHtml($html)
     {
-        $html = rawurlencode($html);
-
-        $exec = "{$this->binary} --headless --disable-gpu ";
-        $exec .= "--print-to-pdf={$this->output} ";
-        $exec .= "data:text/html,{$html} 2>&1";
-        exec($exec);
+        $this->generateFromUrl('data:text/html,' . rawurlencode($html));
     }
 }
