@@ -9,18 +9,33 @@ class ChromePdf
     protected $binary;
     protected $output;
 
-    public function __construct($binary = 'google-chrome')
+    public function __construct($binary = null)
     {
-        if (!$this->isInstalled($binary)) {
+        $this->binary = $this->getBinaryPath($binary);
+
+        if (!$this->isInstalled($this->binary)) {
             throw new Exception('Chrome is not installed (or you are not providing the correct path).');
         }
+    }
 
-        $this->binary = $binary;
+    protected function getBinaryPath($binary = null)
+    {
+        if ($binary) {
+            return $binary;
+        }
+
+        if (PHP_OS === 'WINNT') {
+            return 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe';
+        } elseif (PHP_OS === 'Darwin') {
+            return '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+        }
+
+        return 'google-chrome';
     }
 
     protected function isInstalled($binary)
     {
-        $version = shell_exec(escapeshellcmd($binary) . ' --version 2>&1');
+        $version = shell_exec(escapeshellarg($binary) . ' --version 2>&1');
 
         return substr($version, 0, 13) === 'Google Chrome' || substr($version, 0, 8) === 'Chromium';
     }
@@ -36,7 +51,7 @@ class ChromePdf
     {
         $command = sprintf(
             '%s --headless --disable-gpu --print-to-pdf=%s %s 2>&1',
-            escapeshellcmd($this->binary),
+            escapeshellarg($this->binary),
             escapeshellarg($this->output),
             escapeshellarg($url)
         );

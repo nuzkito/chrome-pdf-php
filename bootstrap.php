@@ -7,5 +7,5 @@ if (file_exists('config.php')) {
 }
 
 if (!isset($_ENV['chrome-executable'])) {
-    $_ENV['chrome-executable'] = 'google-chrome';
+    $_ENV['chrome-executable'] = null;
 }
