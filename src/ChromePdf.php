@@ -46,6 +46,10 @@ class ChromePdf
 
     public function generateFromFile($file)
     {
+        if ($file{0} !== '/') {
+            $file = getcwd() . '/' . $file;
+        }
+
         $this->generateFromUrl('file://' . $file);
     }
 

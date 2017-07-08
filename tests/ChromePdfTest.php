@@ -37,11 +37,23 @@ class ChromePdfTest extends TestCase
     }
 
     /** @test */
-    function generate_pdf_from_html_file()
+    function generate_pdf_from_html_file_using_absolute_path()
     {
         $pdf = new ChromePdf($this->chromeExecutable);
         $pdf->output(__DIR__ . '/' . $this->pdfFile);
         $pdf->generateFromFile(__DIR__ . '/assets/index.html');
+
+        $content = $this->getTextFromPdf();
+
+        $this->assertContains('Lorem ipsum dolor sit amet', $content);
+    }
+
+    /** @test */
+    function generate_pdf_from_html_file_using_relative_path()
+    {
+        $pdf = new ChromePdf($this->chromeExecutable);
+        $pdf->output('tests/' . $this->pdfFile);
+        $pdf->generateFromFile('tests/assets/index.html');
 
         $content = $this->getTextFromPdf();
 
