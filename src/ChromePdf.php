@@ -34,10 +34,14 @@ class ChromePdf
 
     public function generateFromUrl($url)
     {
-        $exec = "{$this->binary} --headless --disable-gpu ";
-        $exec .= "--print-to-pdf={$this->output} ";
-        $exec .= "{$url} 2>&1";
-        exec($exec);
+        $command = sprintf(
+            '%s --headless --disable-gpu --print-to-pdf=%s %s 2>&1',
+            escapeshellcmd($this->binary),
+            escapeshellarg($this->output),
+            escapeshellarg($url)
+        );
+
+        exec($command);
     }
 
     public function generateFromFile($file)
