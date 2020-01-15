@@ -34,7 +34,7 @@ $pdf = new ChromePdf('/path/to/google-chrome');
 $pdf->output('/path/to/result.pdf');
 
 // You can generate a PDF from a url
-$pdf->generateFromFile('http://google.es');
+$pdf->generateFromUrl('http://google.es');
 // ... from a HTML file
 $pdf->generateFromFile('/path/to/html/document.html');
 // ... or pass a string containing the HTML.
