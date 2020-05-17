@@ -37,7 +37,7 @@ class ChromePdf
     {
         $version = shell_exec(escapeshellarg($binary) . ' --version 2>&1');
 
-        return strstr($version,  'Google Chrome') || strstr($version, 'Chromium');
+        return strstr($version, 'Google Chrome') || strstr($version, 'Chromium');
     }
 
     public function output($output)
