@@ -61,7 +61,7 @@ class ChromePdf
 
     public function generateFromFile($file)
     {
-        if ($file{0} !== '/') {
+        if ($file[0] !== '/') {
             $file = getcwd() . '/' . $file;
         }
 
