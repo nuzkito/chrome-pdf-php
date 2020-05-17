@@ -50,7 +50,7 @@ class ChromePdf
     public function generateFromUrl($url)
     {
         $command = sprintf(
-            '%s --headless --disable-gpu --print-to-pdf=%s %s 2>&1',
+            '%s --no-sandbox --headless --disable-gpu --print-to-pdf=%s %s 2>&1',
             escapeshellarg($this->binary),
             escapeshellarg($this->output),
             escapeshellarg($url)
